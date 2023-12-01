@@ -24,7 +24,7 @@ public class ZombieController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         if (playerTransform != null)
         {
@@ -32,14 +32,7 @@ public class ZombieController : MonoBehaviour
             direction.Normalize();
             transform.position += direction * followSpeed * Time.deltaTime;
         }
-        if (!facingRight && moveInput.x > 0)
-        {
-            Flip();
-        }
-        else if (facingRight && moveInput.x < 0)
-        {
-            Flip();
-        }
+       
     }
     private void Flip()
     {
