@@ -23,7 +23,7 @@ public class ZombieController : MonoBehaviour
             Debug.LogError("1");
         }
     }
-    // lox pidrs
+    // lox pidros
     public void FixedUpdate()
     {
         if (playerTransform != null)
