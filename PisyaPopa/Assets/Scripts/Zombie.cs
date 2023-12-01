@@ -5,7 +5,9 @@ using UnityEngine;
 public class ZombieController : MonoBehaviour
 {
     public string playerTag = "Player";
-    public float followSpeed = 0f;
+    public float followSpeed = 5;
+
+    private bool facingRight = true;
 
     private Transform playerTransform;
 
@@ -22,7 +24,7 @@ public class ZombieController : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (playerTransform != null)
         {
@@ -30,5 +32,20 @@ public class ZombieController : MonoBehaviour
             direction.Normalize();
             transform.position += direction * followSpeed * Time.deltaTime;
         }
+        if (!facingRight && moveInput.x > 0)
+        {
+            Flip();
+        }
+        else if (facingRight && moveInput.x < 0)
+        {
+            Flip();
+        }
+    }
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
     }
 }
